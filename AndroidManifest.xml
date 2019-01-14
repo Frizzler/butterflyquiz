@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jimdo.raupenzoo.schmetterlingsquiz">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ImpressumActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Frage001Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage002Activity"
+                  android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage003Activity"
+                  android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage004Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage005Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage006Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage007Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage008Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage009Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".Frage010Activity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+        <activity android:name=".ErgebnisActivity"
+            android:parentActivityName=".ImpressumActivity" >
+            <!-- Der meta-data Tag ist notwendig für API Level 15 oder niedriger -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImpressumActivity"
+                />
+        </activity>
+    </application>
+
+</manifest>
