@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Die Farben sind definiert in res/values/colors.xml -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" >
+        <shape>
+            <gradient
+                android:endColor="@color/colorPrimaryDark"
+                android:startColor="@color/colorPrimaryDark"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="#ffffff" />
+            <corners
+                android:radius="7dp" />
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+
+    <item android:state_focused="true" >
+        <shape>
+            <gradient
+                android:endColor="@color/colorPrimaryDark"
+                android:startColor="@color/colorPrimaryDark"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="#ffffff" />
+            <corners
+                android:radius="7dp" />
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+
+    <item>        
+        <shape>
+            <gradient
+                android:endColor="@color/colorPrimaryBright"
+                android:startColor="@color/colorPrimaryBright"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="#ffffff" />
+            <corners
+                android:radius="7dp" />
+            <padding
+                android:left="10dp"
+                android:top="0dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+</selector>
