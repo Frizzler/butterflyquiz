@@ -75,6 +75,7 @@ public class AbstractFrageActivity extends AppCompatActivity {
                         new MyOnScaleGestureListener () );
     }
 
+
     /**
      * Das Layout anpassen / schön machen.
      * Zugrunde gelegt wird die Breite des jeweiligen Bildschirms.

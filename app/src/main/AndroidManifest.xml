@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        android:configChanges="orientation|screenSize|keyboard"
         <activity android:name=".ImpressumActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +41,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ImpressumActivity" />
         </activity>
+
+
     </application>
 
 </manifest>

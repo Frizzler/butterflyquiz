@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.jimdo.raupenzoo.schmetterlingsquiz.ImpressumActivity">
+    tools:context="com.example.butterflyquiz.ImpressumActivity">
 
     <TextView
         android:id="@+id/impressumheader"

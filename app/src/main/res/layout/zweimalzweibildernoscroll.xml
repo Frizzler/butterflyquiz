@@ -18,7 +18,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.jimdo.raupenzoo.schmetterlingsquiz.Frage001Activity">
+    tools:context="com.example.butterflyquiz.Frage001Activity">
 
     <!-- Frage -->
     <TextView

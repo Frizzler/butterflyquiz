@@ -11,6 +11,7 @@ public class Frage002Activity extends AbstractFrageActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
+
         // Frage und Bilder setzen
         // (im Layout-Template sind defaultmäßig die von Frage 1 hinterlegt):
         frage.setText ( R.string.frage002 );

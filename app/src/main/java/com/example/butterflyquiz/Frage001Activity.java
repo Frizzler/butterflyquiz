@@ -50,7 +50,9 @@ public class Frage001Activity extends AbstractFrageActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
+
     }
+
 
     /**
      * Wenn auf ein Bild geklickt wird, dieses oben vergrößert anzeigen.
