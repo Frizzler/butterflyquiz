@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Butterfly Quiz</string>
+    <string name="impressumheader">Impressum</string>
+    <string name="impressum">Dieses Quiz zum Thema Schmetterlinge wurde programmiert von: \nFabian Fritzer, Koblenz, fabian.fritzer@gmx.de</string>
+    <string name="sounds">Sounds\nDie Sounds stammen von Freesound.org und unterliegen der Creative Commons License. Bling von LittleRainySeasons und Mööp von RICHERlandTV.</string>
+    <string name="copyright">Copyright\nAlle Fotos © Fabian Fritzer, außer das Ei vom Aurorafalter © Daniel Müller</string>
+    <string name="impressumstartbutton">Ok. Quiz starten.</string>
+    <string name="loesungdefaulttext">Auswahl durch Anklicken</string>
+    <string name="loesungdefaulttextbutton">Vergrößern eines Bilds durch Anklicken,\r\nAuswahl durch Klick auf den zugehörigen Button</string>
+    <string name="loesungdefaulttextlongclick">Vergrößern eines Bilds durch längeres Anklicken,\r\nAuswahl durch normales Anklicken</string>
+    <string name="buttona">A</string>
+    <string name="buttonb">B</string>
+    <string name="buttonc">C</string>
+    <string name="buttond">D</string>
+    <string name="weiterbutton">weiter zur nächsten Frage</string>
+    <string name="frage001">Frage 1 / 10:\r\nWelcher Schmetterling ist das Tagpfauenauge?</string>
+    <string name="frage002">Frage 2 / 10:\r\nWelcher Schmetterling ist der Kleine Fuchs?</string>
+    <string name="frage003">Frage 3 / 10:\r\nWelcher Schmetterling ist das Tagpfauenauge?</string>
+    <string name="frage004">Frage 4 / 10:\r\nWelcher Schmetterling ist eine Langhornmotte?</string>
+    <string name="frage005">Frage 5 / 10:\r\nFinde alle Zitronenfalter!</string>
+    <string name="frage006">Frage 6 / 10:\r\nTippe die vier Stadien in der richtigen Reihenfolge an!</string>
+    <string name="frage007">Frage 7 / 10:\r\nWelche Raupe ist eine Spannerraupe?</string>
+    <string name="frage008">Frage 8 / 10:\r\nWelches dieser Insekten ist kein Schmetterling?</string>
+    <string name="frage009">Frage 9 / 10:\r\nWelche dieser vier Schmetterlingsarten hat den längsten Saugrüssel?</string>
+    <string name="frage010">Frage 10 / 10:\r\nWelcher dieser vier Schmetterlinge ist kein Bläuling?</string>
+    <string name="weiterbuttonergebnis">weiter zum Ergebnis</string>
+    <string name="ergebnisheader">Ergebnis</string>
+    <string name="ergebnisnochmalbutton">Quiz nochmal spielen</string>
+    <string name="ergebnisbeendenbutton">Quiz beenden</string>
+</resources>
