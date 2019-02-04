@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Layout-Definiton für eine Activity mit oben einer Frage,
+     darunter ein zunächst versteckter Bereich zur Vergrößerung eines Bilds,
+     darunter zwei Zeilen à zwei Bilder,
+     darunter die Lösung,
+     darunter der Weiter-Button.
+     Die im Attribut "tools:context" angegebene Activity dient nur dazu,
+     der Entwicklungsumgebung Hinweise zur Darstellung / Vorschau zu geben.
+     Tatsächlich kann dieses Layout für beliebige viele Activities verwendet werden.
+     Die hier im Layout angegebenen Texte und Bilder werden dann in der Activity
+     dynamisch gesetzt.
+     Je nach Bildschirmformat passt nicht alles ganz drauf,
+     deshalb vorsichtshalber alles in einen Scrollview einbetten.
+     Geht nur leider nicht mit Pinch Zoom, deshalb doch kein ScrollView. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.example.butterflyquiz.Frage001Activity">
+
+    <!-- Frage -->
+    <TextView
+        android:id="@+id/frage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="20"
+        android:text="@string/frage001"
+        android:textAlignment="center"
+        tools:text="@string/frage001" />
+
+    <!-- Bereich zur vergrößerten Ansicht eines Bilds -->
+    <ImageView
+        android:id="@+id/imageviewenlargeoben"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="50"
+        android:onClick="removeenlargeviewoben"
+        android:visibility="gone"
+        app:srcCompat="@drawable/frage001_1" />
+
+    <!-- Bilder A und B nebeneinander -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/oberezweibilder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageviewlinksoben"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="50"
+            app:srcCompat="@drawable/frage001_1" />
+
+        <ImageView
+            android:id="@+id/imageviewrechtsoben"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="50"
+            app:srcCompat="@drawable/frage001_2" />
+
+    </LinearLayout>
+
+    <!-- Bilder C und D nebeneinander -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/unterezweibilder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageviewlinksunten"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="50"
+            app:srcCompat="@drawable/frage001_3" />
+
+        <ImageView
+            android:id="@+id/imageviewrechtsunten"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="50"
+            app:srcCompat="@drawable/frage001_4" />
+
+    </LinearLayout>
+
+    <!-- Lösungstext -->
+    <TextView
+        android:id="@+id/loesung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="20"
+        android:text="@string/loesungdefaulttext"
+        android:textAlignment="center" />
+
+    <!-- Weiter-Button; wird erst sichtbar durch Klick auf die richtige Antwort -->
+    <Button
+        android:id="@+id/weiterbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="21"
+        android:onClick="sendMessage"
+        android:text="@string/weiterbutton"
+        android:textAlignment="center"
+        android:visibility="invisible" />
+
+</LinearLayout>
