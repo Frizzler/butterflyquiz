@@ -2,8 +2,11 @@ package com.example.butterflyquiz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 /**
@@ -45,11 +48,18 @@ import android.widget.Button;
  * TODO Facebook, Lepiforum
  */
 public class Frage001Activity extends AbstractFrageActivity {
+    private ScaleGestureDetector mScaleGestureDetector;
+    private float mScaleFactor = 1.0f;
+    private ImageView ImageView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
+
+        // initialize the view and the gesture detector
+        ImageView = findViewById ( R.id.imageviewenlargeoben );
+        mScaleGestureDetector = new ScaleGestureDetector ( this, new ScaleListener () );
 
     }
 
@@ -138,6 +148,29 @@ public class Frage001Activity extends AbstractFrageActivity {
         // Die Info durchschleifen, ob Sounds aktiviert sind:
         intent.putExtra ( "soundistaktiviert", soundistaktiviert );
         startActivity ( intent );
+    }
+
+    // this redirects all touch events in the activity to the gesture detector
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        super.dispatchTouchEvent ( event );
+
+        mScaleGestureDetector.onTouchEvent ( event );
+        return mScaleGestureDetector.onTouchEvent ( event );
+
+    }
+
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
+            mScaleFactor *= scaleGestureDetector.getScaleFactor ();
+            mScaleFactor = Math.max ( 0.1f,
+                    Math.min ( mScaleFactor, 10.0f ) );
+            ImageView.setScaleX ( mScaleFactor );
+            ImageView.setScaleY ( mScaleFactor );
+            return true;
+        }
     }
 
 }
