@@ -3,7 +3,7 @@ package com.jimdo.raupenzoo.schmetterlingsquiz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 
 
 /**
@@ -24,6 +24,8 @@ import android.widget.Button;
  *      Pinch-Zoom innerhalb eines Bilds erkennen durch onTouchListener,
  *      dieses dann oben vergrößert anzeigen (somit Vergrößerung möglich durch Klick/LongKlick, Doppelklick und Pinch-Zoom-Versuch)
  *      (TODO oben dann nochmal TouchImageView verwenden)
+ * TODO Bilder und Fragen der Oberklasse bekannt machen wie bis Frage 7 geschehen
+ * TODO Pinch Zoom inside scrollview https://stackoverflow.com/questions/19615697/how-to-make-zoomable-scrollview
  * TODO Buttons schön machen wie in Frage 2; bei richtiger Antwort Button grün machen, bei falscher rot
  * TODO Bilder bereits onTouch vergrößern, damit Vergrößerung auch bei Pinch-Versuch triggert
  * TODO Kippen führt zu anderem Layout (kombiniert mit Lösungen aus Frage 6)
@@ -50,37 +52,19 @@ public class Frage001Activity extends AbstractFrageActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /**
+         * Frage und Bilder setzen.
+         * Die Werte werden in der Oberklasse gesetzt,
+         * damit sie dort verfügbar sind für Vergrößerungen.
+         */
+        imagelinksoben   = R.drawable.frage001_1;
+        imagerechtsoben  = R.drawable.frage001_2;
+        imagelinksunten  = R.drawable.frage001_3;
+        imagerechtsunten = R.drawable.frage001_4;
+        fragetext        = R.string.frage001;
         super.onCreate(savedInstanceState);
     }
 
-    /**
-     * Wenn auf ein Bild geklickt wird, dieses oben vergrößert anzeigen.
-     * @param view
-     */
-    public void enlargeimagea(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage001_1);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-    public void enlargeimageb(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage001_2);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-    public void enlargeimagec(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage001_3);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-    public void enlargeimaged(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage001_4);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * Wenn auf das vergrößerte Bild geklickt wird, die Vergrößerung wieder ausblenden.
-     * @param view
-     */
-    public void removeenlargeviewoben(View view) {
-        imageviewenlargeoben.setVisibility(View.GONE);
-    }
 
     /**
      * Wenn auf Bild 1 geklickt wird, dieses grün umrahmen, den Weiter-Button einblenden

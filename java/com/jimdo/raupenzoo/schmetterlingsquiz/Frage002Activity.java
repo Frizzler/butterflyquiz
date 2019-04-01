@@ -3,51 +3,26 @@ package com.jimdo.raupenzoo.schmetterlingsquiz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 
 public class Frage002Activity extends AbstractFrageActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /**
+         * Frage und Bilder setzen.
+         * Die Werte werden in der Oberklasse gesetzt,
+         * damit sie dort verfügbar sind für Vergrößerungen.
+         */
+        imagelinksoben   = R.drawable.frage002_1;
+        imagerechtsoben  = R.drawable.frage002_2;
+        imagelinksunten  = R.drawable.frage002_3;
+        imagerechtsunten = R.drawable.frage002_4;
+        fragetext        = R.string.frage002;
         super.onCreate(savedInstanceState);
-        // Frage und Bilder setzen
-        // (im Layout-Template sind defaultmäßig die von Frage 1 hinterlegt):
-        frage.setText(R.string.frage002);
-        imageviewlinksoben.setImageResource(R.drawable.frage002_1);
-        imageviewrechtsoben.setImageResource(R.drawable.frage002_2);
-        imageviewlinksunten.setImageResource(R.drawable.frage002_3);
-        imageviewrechtsunten.setImageResource(R.drawable.frage002_4);
     }
 
-    /**
-     * Wenn auf ein Bild geklickt wird, dieses oben vergrößert anzeigen.
-     * @param view
-     */
-    public void enlargeimagea(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage002_1);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-    public void enlargeimageb(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage002_2);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-    public void enlargeimagec(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage002_3);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-    public void enlargeimaged(View view) {
-        imageviewenlargeoben.setImageResource(R.drawable.frage002_4);
-        imageviewenlargeoben.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * Wenn auf das vergrößerte Bild geklickt wird, die Vergrößerung wieder ausblenden.
-     * @param view
-     */
-    public void removeenlargeviewoben(View view) {
-        imageviewenlargeoben.setVisibility(View.GONE);
-    }
 
     /**
      * Wenn auf Button A (unter Bild 1) geklickt wird,

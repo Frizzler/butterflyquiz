@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import static com.jimdo.raupenzoo.schmetterlingsquiz.R.id.oberezweibilder;
 
 /**
  * Enthält Code, der bei allen Fragen gleich ist.
@@ -23,19 +22,24 @@ import static com.jimdo.raupenzoo.schmetterlingsquiz.R.id.oberezweibilder;
  */
 public class AbstractFrageActivity extends AppCompatActivity {
 
-    TextView frage;
+    TextView  frage;
+    int       fragetext;
 
     ImageView imageviewenlargeoben;
     ImageView imageviewlinksoben;
+    int       imagelinksoben;
     ImageView imageviewrechtsoben;
+    int       imagerechtsoben;
     ImageView imageviewlinksunten;
+    int       imagelinksunten;
     ImageView imageviewrechtsunten;
+    int       imagerechtsunten;
 
     TextView  loesung;
 
     Button    weiterbutton;
 
-    boolean soundistaktiviert = false;
+    boolean   soundistaktiviert = false;
 
     /**
      * Zähler für die falsch ausgewählten Antworten.
@@ -48,6 +52,7 @@ public class AbstractFrageActivity extends AppCompatActivity {
      * Damit die Zoombewegung auf einem Bild erkannt werden kann
      */
     ScaleGestureDetector scaleGestureDetector;
+    private float mScaleFactor = 1.0f;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +60,16 @@ public class AbstractFrageActivity extends AppCompatActivity {
         setContentView(R.layout.zweimalzweibildermitbuttons);
         // Klassenvariablen vorbelegen:
         frage = (TextView) findViewById(R.id.frage);
+        frage.setText(fragetext);
         imageviewenlargeoben = (ImageView) findViewById(R.id.imageviewenlargeoben);
         imageviewlinksoben   = (ImageView) findViewById(R.id.imageviewlinksoben);
+        imageviewlinksoben.setImageResource(imagelinksoben);
         imageviewrechtsoben  = (ImageView) findViewById(R.id.imageviewrechtsoben);
+        imageviewrechtsoben.setImageResource(imagerechtsoben);
         imageviewlinksunten  = (ImageView) findViewById(R.id.imageviewlinksunten);
+        imageviewlinksunten.setImageResource(imagelinksunten);
         imageviewrechtsunten = (ImageView) findViewById(R.id.imageviewrechtsunten);
+        imageviewrechtsunten.setImageResource(imagerechtsunten);
         loesung = (TextView)findViewById(R.id.loesung);
         weiterbutton = (Button) findViewById(R.id.weiterbutton);
         // Intent holen, der diese Aktivität gestartet hat:
@@ -90,7 +100,7 @@ public class AbstractFrageActivity extends AppCompatActivity {
          * Die neue Höhe ist ein Drittel der Bildschirmbreite:
          */
         int adjustedheight = Resources.getSystem().getDisplayMetrics().widthPixels / 3;
-        LinearLayout linearlayoutoben = (LinearLayout) findViewById(oberezweibilder);
+        LinearLayout linearlayoutoben = (LinearLayout) findViewById(R.id.oberezweibilder);
         ViewGroup.LayoutParams paramsoben = linearlayoutoben.getLayoutParams();
         paramsoben.height = adjustedheight;
         linearlayoutoben.setLayoutParams(paramsoben);
@@ -120,6 +130,35 @@ public class AbstractFrageActivity extends AppCompatActivity {
     //int adjustedheight = (2 * imageview4.getWidth()) / 3;
     //imageview4.setAdjustViewBounds(true);
     //imageview4.setMaxHeight(adjustedheight);
+
+    /**
+     * Wenn auf ein Bild geklickt wird, dieses oben vergrößert anzeigen.
+     * @param view
+     */
+    public void enlargeimagea(View view) {
+        imageviewenlargeoben.setImageResource(imagelinksoben);
+        imageviewenlargeoben.setVisibility(View.VISIBLE);
+    }
+    public void enlargeimageb(View view) {
+        imageviewenlargeoben.setImageResource(imagerechtsoben);
+        imageviewenlargeoben.setVisibility(View.VISIBLE);
+    }
+    public void enlargeimagec(View view) {
+        imageviewenlargeoben.setImageResource(imagelinksunten);
+        imageviewenlargeoben.setVisibility(View.VISIBLE);
+    }
+    public void enlargeimaged(View view) {
+        imageviewenlargeoben.setImageResource(imagerechtsunten);
+        imageviewenlargeoben.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Wenn auf das vergrößerte Bild geklickt wird, die Vergrößerung wieder ausblenden.
+     * @param view
+     */
+    public void removeenlargeviewoben(View view) {
+        imageviewenlargeoben.setVisibility(View.GONE);
+    }
 
     /**
      * Der Mööp-Sound wird abgespielt, wenn soundistaktiviert
@@ -164,25 +203,46 @@ public class AbstractFrageActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Normalerweise wird zum Erkennen von Gestures onTouchEvent() verwendet.
+     * Das funktioniert jedoch innerhalb von Scrollviews nicht.
+     * Daher Verwendung von dispatchTouchEvent().
+     * Details siehe
+     * https://stackoverflow.com/questions/19615697/how-to-make-zoomable-scrollview
+     *
+     * @param  event z.B. ein Klick oder ein pinch zoom
+     * @return true, d.h. das Event wird danach noch weiter ausgewertet
+     */
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        loesung.setText("onTouchEvent");
-        scaleGestureDetector.onTouchEvent(event);
-        return true;
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        super.dispatchTouchEvent (event);
+        //loesung.setText("dispatchTouchEvent");
+        return scaleGestureDetector.onTouchEvent(event);
     }
 
     public class MyOnScaleGestureListener extends SimpleOnScaleGestureListener {
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-            float scaleFactor = detector.getScaleFactor();
-            float xpinch = detector.getFocusX(); // rechts links
-            float ypinch = detector.getFocusY(); // oben unten
+
+            mScaleFactor *= scaleGestureDetector.getScaleFactor ();
+            mScaleFactor = Math.max ( 0.5f, Math.min ( mScaleFactor, 5.0f ) );
+            //imageviewenlargeoben.setScaleX ( mScaleFactor );
+            //imageviewenlargeoben.setScaleY ( mScaleFactor );
+            LinearLayout gesamt = (LinearLayout) findViewById(R.id.activity_main);
+            gesamt.setScaleX(mScaleFactor);
+            gesamt.setScaleY(mScaleFactor);
+            if (true) return true;
+
+            mScaleFactor *= scaleGestureDetector.getScaleFactor();
+            mScaleFactor = Math.max ( 0.1f, Math.min ( mScaleFactor, 10.0f ) );
+            float xpinch = scaleGestureDetector.getFocusX(); // rechts links
+            loesung.setText("xpinch: " + xpinch);
+            float ypinch = scaleGestureDetector.getFocusY(); // oben unten
             ImageView rechtsoben = (ImageView) findViewById(R.id.imageviewrechtsoben);
             int xrechtsoben = rechtsoben.getLeft();
-            LinearLayout oberzweibilder = (LinearLayout) findViewById(oberezweibilder);
-            int yrechtsoben = oberzweibilder.getBottom();
+            LinearLayout oberezweibilder = (LinearLayout) findViewById(R.id.oberezweibilder);
+            int yrechtsoben = oberezweibilder.getBottom();
 
             /*
              * Rechts
@@ -192,20 +252,28 @@ public class AbstractFrageActivity extends AppCompatActivity {
                 * Unten
                 */
                 if (ypinch >= yrechtsoben) {
-                    if (scaleFactor > 1) {
-                        loesung.setText(yrechtsoben + " Rechts unten, Zooming Out " + ypinch);
-                    } else {
-                        loesung.setText("Rechts unten, Zooming In " + xpinch);
+                    if (mScaleFactor > 1) {
+                        imageviewenlargeoben.setVisibility(View.GONE);
+                        loesung.setText("rechts unten verkleinert");
+                    }
+                    else {
+                        imageviewenlargeoben.setImageResource(imagerechtsunten);
+                        imageviewenlargeoben.setVisibility(View.VISIBLE);
+                        loesung.setText("rechts unten vergrößert");
                     }
                 }
                /*
                 * Oben
                 */
                 else {
-                    if (scaleFactor > 1) {
-                        loesung.setText(yrechtsoben + " Rechts oben, Zooming Out " + ypinch);
-                    } else {
-                        loesung.setText("Rechts oben, Zooming In " + xpinch);
+                    if (mScaleFactor > 1) {
+                        imageviewenlargeoben.setVisibility(View.GONE);
+                        loesung.setText("rechts oben verkleinert");
+                    }
+                    else {
+                        imageviewenlargeoben.setImageResource(imagerechtsoben);
+                        imageviewenlargeoben.setVisibility(View.VISIBLE);
+                        loesung.setText("rechts oben vergrößert");
                     }
                 }
             }
@@ -217,20 +285,28 @@ public class AbstractFrageActivity extends AppCompatActivity {
                 * Unten
                 */
                 if (ypinch >= yrechtsoben) {
-                    if (scaleFactor > 1) {
-                        loesung.setText(yrechtsoben + " Links unten, Zooming Out " + ypinch);
-                    } else {
-                        loesung.setText("Links unten, Zooming In " + xpinch);
+                    if (mScaleFactor > 1) {
+                        imageviewenlargeoben.setVisibility(View.GONE);
+                        loesung.setText("Links unten verkleinert");
+                    }
+                    else {
+                        imageviewenlargeoben.setImageResource(imagelinksunten);
+                        imageviewenlargeoben.setVisibility(View.VISIBLE);
+                        loesung.setText("links unten vergrößert");
                     }
                 }
                /*
                 * Oben
                 */
                 else {
-                    if (scaleFactor > 1) {
-                        loesung.setText(yrechtsoben + " Links oben, Zooming Out " + ypinch);
-                    } else {
-                        loesung.setText("Links oben, Zooming In " + xpinch);
+                    if (mScaleFactor > 1) {
+                        imageviewenlargeoben.setVisibility(View.GONE);
+                        loesung.setText("Links oben verkleinert");
+                    }
+                    else {
+                        imageviewenlargeoben.setImageResource(imagelinksoben);
+                        imageviewenlargeoben.setVisibility(View.VISIBLE);
+                        loesung.setText("links oben vergrößert");
                     }
                 }
             }
@@ -239,10 +315,12 @@ public class AbstractFrageActivity extends AppCompatActivity {
 
 
         public boolean onScaleBegin(ScaleGestureDetector detector) {
+            //loesung.setText("onScaleBegin");
             return true;
         }
 
         public void onScaleEnd(ScaleGestureDetector detector) {
+            //loesung.setText("onScaleEnd");
         }
     }// end class declaration of MyOnScaleGestureListener
 
