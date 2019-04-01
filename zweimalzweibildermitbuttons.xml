@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout-Definiton für eine Activity mit oben einer Frage,
+     darunter ein zunächst versteckter Bereich zur Vergrößerung eines Bilds,
+     darunter zwei Zeilen à zwei Bilder mit jeweils Buttons zum Auswählen,
+     darunter die Lösung,
+     darunter der Weiter-Button.
+     Die im Attribut "tools:context" angegebene Activity dient nur dazu,
+     der Entwicklungsumgebung Hinweise zur Darstellung / Vorschau zu geben.
+     Tatsächlich kann dieses Layout für beliebige viele Activities verwendet werden.
+     Die hier im Layout angegebenen Texte und Bilder werden dann in der Activity
+     dynamisch gesetzt.
+     Je nach Bildschirmformat passt nicht alles ganz drauf,
+     deshalb vorsichtshalber alles in einen Scrollview einbetten. -->
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/scrollview"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        tools:context="com.jimdo.raupenzoo.schmetterlingsquiz.Frage001Activity"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- Frage -->
+        <TextView
+            android:id="@+id/frage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="20"
+            android:text="@string/frage001"
+            android:textAlignment="center"
+            tools:text="@string/frage001" />
+
+        <!-- Bereich zur vergrößerten Ansicht eines Bilds -->
+        <ImageView
+            android:id="@+id/imageviewenlargeoben"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="50"
+            android:visibility="gone"
+            android:onClick="removeenlargeviewoben"
+            app:srcCompat="@drawable/frage001_1" />
+
+        <!-- Bilder A und B nebeneinander -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/oberezweibilder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageviewlinksoben"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="50"
+                android:onClick="enlargeimagea"
+                app:srcCompat="@drawable/frage001_1" />
+
+            <ImageView
+                android:id="@+id/imageviewrechtsoben"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="50"
+                android:onClick="enlargeimageb"
+                app:srcCompat="@drawable/frage001_2" />
+
+        </LinearLayout>
+
+        <!-- Buttons zu den Bildern A und B nebeneinander -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/oberezweibuttons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttona"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="10"
+                android:onClick="sendbuttona"
+                android:text="@string/buttona"
+                android:gravity="top|center"
+                android:background="@drawable/custom_button"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+            />
+
+            <Button
+                android:id="@+id/buttonb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="10"
+                android:onClick="sendbuttonb"
+                android:text="@string/buttonb"
+                android:gravity="top|center"
+                android:background="@drawable/custom_button"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+            />
+
+        </LinearLayout>
+
+        <!-- Bilder C und D nebeneinander -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/unterezweibilder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageviewlinksunten"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="50"
+                android:onClick="enlargeimagec"
+                app:srcCompat="@drawable/frage001_3" />
+
+            <ImageView
+                android:id="@+id/imageviewrechtsunten"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="50"
+                android:onClick="enlargeimaged"
+                app:srcCompat="@drawable/frage001_4" />
+
+        </LinearLayout>
+
+        <!-- Buttons zu den Bildern C und D nebeneinander -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/unterezweibuttons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="10"
+                android:onClick="sendbuttonc"
+                android:text="@string/buttonc"
+                android:gravity="top|center"
+                android:background="@drawable/custom_button"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+            />
+
+            <Button
+                android:id="@+id/buttond"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="10"
+                android:onClick="sendbuttond"
+                android:text="@string/buttond"
+                android:gravity="top|center"
+                android:background="@drawable/custom_button"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+            />
+        </LinearLayout>
+
+        <!-- Lösungstext -->
+        <TextView
+            android:id="@+id/loesung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="20"
+            android:text="@string/loesungdefaulttextbutton"
+            android:textAlignment="center" />
+
+        <!-- Weiter-Button; wird erst sichtbar durch Klick auf die richtige Antwort -->
+        <Button
+            android:id="@+id/weiterbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="21"
+            android:onClick="sendMessage"
+            android:text="@string/weiterbutton"
+            android:textAlignment="center"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+</ScrollView>
